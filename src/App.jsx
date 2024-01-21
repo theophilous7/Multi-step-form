@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Personal from './components/personal-info/personal'
+import Plan from './components/plan/plan'
 
 import './App.css'
 
@@ -7,7 +9,8 @@ function App() {
 
   return (
     <>
-      <h1>Shut up Man!</h1>
+      <Personal />
+      <Plan />
       
     </>
   )
