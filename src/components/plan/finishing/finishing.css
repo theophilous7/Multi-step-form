@@ -1,0 +1,9 @@
+.holder-finish{
+    width: 65%;
+    height: 40vh;
+    background-color: hsl(0, 0, 100%);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px  #ccc;
+    padding: 5px 10px;
+    margin: auto;
+}
