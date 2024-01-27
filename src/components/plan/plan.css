@@ -7,18 +7,21 @@
     --Light-blue: hsl(206, 94%, 87%);
     --Strawberry-red: hsl(354, 84%, 57%);
 }
-.holder{
+.plan-holder{
     width: 70%;
-    height: 80vh;
+    height: 85vh;
     background-color: hsl(0, 0%, 100%);
     border-radius: 10px;
     box-shadow: 0 2px 3px  #ccc;
     padding: 5px 10px;
     margin: auto;
+    position: absolute;
+    top: 70px;
+    left: 13%;
 }
 .plan{
     width: 85%;
-    height: 5.5vh;
+    height: 8.5vh;
     margin: 10px 0px;
     border: 2px solid var(--gray) ;
     border-radius: 7px;
@@ -39,11 +42,15 @@
 }
 .toggler{
     width: 97%;
-    height: 3vh;
+    height: 5vh;
+    margin-top: 6px;
     background-color: hsl(229, 24%, 87%);
     text-align: center;
     padding-top: 13px;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .toggler > span{
     margin: 16px;

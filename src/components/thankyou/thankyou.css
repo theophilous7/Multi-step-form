@@ -1,0 +1,9 @@
+.holder{
+    width: 70%;
+    height: 80vh;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px  #ccc;
+    padding: 5px 10px;
+    margin: auto;
+}

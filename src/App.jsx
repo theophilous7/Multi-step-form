@@ -1,18 +1,74 @@
-import { useState } from 'react'
+import { useState} from 'react'
 import Personal from './components/personal-info/personal'
 import Plan from './components/plan/plan'
 import Pick from './components/pick/pick'
 import Finishing from './components/plan/finishing/finishing'
+import Thankyou from './components/thankyou/thankyou'
 import './App.css'
 
 function App() {
-        const [modalOne, setModalOne] = useState(false);
-        const [modalTwo, setModalTwo] = useState(false);
-        const [steps, setSteps] = useState([1,2,3,4]);
-        const stepHandler = ()=>{;
-            setModalOne(true);
-        }
+    const [stepOne, setStepOne] = useState(true);
+    const [stepTwo, setStepTwo] = useState(false);
+    const [stepThree, setStepThree] = useState(false);
+    const [stepFour, setStepFour] = useState(false);
+    const [stepFive, setStepFive] = useState(false);
+   
+   
+
+    const nextHandler = ()=>{
         
+       
+        if (stepOne){
+            setStepOne(false);
+            setStepTwo(true);
+        }
+        else if (stepTwo){
+            setStepTwo(false);
+            setStepThree(true);
+        }
+        else if (stepThree){
+            setStepThree(false);
+            setStepFour(true);
+        }
+        else if(stepFour){
+            setStepFour(false);
+            setStepFive(true);
+        }
+        else{
+            null;
+        }
+    }
+  
+    const backHandler = ()=>{
+
+        
+         if (stepTwo){
+            setStepTwo(false);
+            setStepOne(true);
+        }
+        else if (stepThree){
+            setStepThree(false);
+            setStepTwo(true);
+        }
+        else{
+            setStepFour(false);
+            setStepThree(true);
+
+        }
+    }
+        let nextStep = (
+            <button className='next-step' onClick={nextHandler}>{stepFour ?
+             <span>Confirm</span> 
+            : stepFive? null :
+            <span>Next Step</span>}</button>
+        )
+        let goBack = (
+         <span className='go-back' onClick={backHandler}>Go back</span>    
+        )
+        let navStyles = {
+            "background-color": "hsl(228, 100%, 84%)"
+        }
+    
     return(
       <>
      <main>
@@ -37,21 +93,22 @@ function App() {
           </g>
       </g>
     </svg>
-        <div className="nav">
-          {steps.map(()=>{
-            return <div className="index" >{index}</div>
-          })}
-        
+    <div className="nav">
+      <div className="index" style={stepOne ? navStyles : null}>1</div>
+      <div className="index" style={stepTwo ? navStyles : null}>2</div>
+      <div className="index" style={stepThree ? navStyles : null}>3</div>
+      <div className="index" style={stepFour || stepFive ? navStyles : null}>4</div>
         </div>
-       {modalOne ? <Personal /> : modalTwo ? <Plan />
-        : modalThree ? <Pick />
-        : modalFour ? <Finishing /> :null
-      }
+            {stepOne ?   <Personal /> :
+             stepTwo  ? <Plan /> : stepThree ? <Pick />
+            : stepFour ? <Finishing /> : stepFive ? <Thankyou /> : null
+        }
        
      </main>
      <footer>
-     <span className='go-back'>Go back</span>
-      <button className='next-step'>Next Step</button>
+     {stepOne || stepFive?   <span></span>  : goBack}
+        {stepFive ? null : nextStep}
+    
      </footer>
      </>
     );
